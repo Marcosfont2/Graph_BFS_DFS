@@ -135,7 +135,7 @@ def bfs_with_matrix(mat, vertices, src_index):
 
     while q:
         u = q.popleft()
-        # percorrer vizinhos em ordem lexicográfica: índices 0..n-1 correspondem à vertices ordenadas
+        # percorre vizinhos em ordem lexicográfica: índices 0..n-1 correspondem à vertices ordenadas
         for v in range(n):
             if mat[u][v] and color[v] == 'white':
                 color[v] = 'gray'
@@ -153,9 +153,9 @@ def print_bfs_result(vertices, order, dist, parent):
         print("(grafo vazio)")
         return
     src = order[0] if order else vertices[0]
-    print(f"Source: {src}")
+    print(f"Origem: {src}")
     print()
-    print(f"{'Vertex':<20}{'Distance':<12}{'Parent'}")
+    print(f"{'Vértice':<20}{'Distância':<12}{'Parentes'}")
     for i, v in enumerate(vertices):
         d = dist[i]
         d_str = str(d) if d is not None else "INF"
@@ -163,7 +163,7 @@ def print_bfs_result(vertices, order, dist, parent):
         p_str = vertices[p] if p is not None else "NIL"
         print(f"{v:<20}{d_str:<12}{p_str}")
     print()
-    print("Visit order:")
+    print("Ordem de visita:")
     if order:
         print(" ".join(order))
     else:
@@ -175,7 +175,7 @@ def main(argv):
         return 1
     path = argv[1]
     directed, vertices, edges = parse_dot(path)
-    # já ordenamos vertices dentro do parse; garante a ordem lexicográfica
+    # ordenei os vertices dentro do parse; garante a ordem lexicográfica
     mat, idx_of = build_adj_matrix(vertices, edges, directed)
     if not vertices:
         print("Grafo vazio.")

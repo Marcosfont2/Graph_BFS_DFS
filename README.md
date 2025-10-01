@@ -43,15 +43,15 @@ Saída esperada:
 
 ```bash
 BFS Result
-Source: a
+Origem: a
 
-Vertex              Distance    Parent
+Vértice             Distância   Parentes
 a                   0           NIL
 b                   1           a
 c                   1           a
 d                   2           b
 
-Visit order:
+Ordem de visita:
 a b c d
 ```
 
