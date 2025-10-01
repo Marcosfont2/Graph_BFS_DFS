@@ -51,12 +51,11 @@ def parse_dot(path):
 
         # substitui vírgulas por espaço (caso usem), remove excesso de espaços
         part = part.replace(',', ' ')
-        # identificando uma sequência de tokens e conectores
+        # identifica uma sequência de tokens e conectores
         # Ex: a -- b -- c  ou a -> b -> c  ou isolado: a
-        # vamos extrair todos os tokens (nomes) e conectores na ordem
+        # Extrai todos os tokens (nomes) e conectores na ordem
         tokens = []
-        connectors = []
-        # walk through the part and pick up tokens and connectors in order
+        connectors = [] 
         idx = 0
         L = len(part)
         while idx < L:
@@ -73,7 +72,7 @@ def parse_dot(path):
                 continue
             idx += 1
 
-        # se não houver conectores mas houver tokens soltos, adicioná-los aos vértices
+        # se não houver conectores mas houver tokens soltos, adicionei aos vértices
         if not connectors:
             for t in tokens:
                 vertices_set.add(t)
@@ -148,14 +147,7 @@ def bfs_with_matrix(mat, vertices, src_index):
     return order, dist, parent
 
 def print_bfs_result(vertices, order, dist, parent):
-    """
-    Imprime resultado da BFS.
-    Formato sugerido:
-    - Linha com 'Source: <vertex>'
-    - Em seguida uma tabela (por vértice em ordem lexicográfica):
-        Vertex  Distance  Parent
-    - E a linha 'Visit order: a b c ...' com ordem de descoberta
-    """
+
     print("BFS Result")
     if not vertices:
         print("(grafo vazio)")
@@ -183,7 +175,7 @@ def main(argv):
         return 1
     path = argv[1]
     directed, vertices, edges = parse_dot(path)
-    # já ordenamos vertices dentro do parse; garantimos ordem lexicográfica
+    # já ordenamos vertices dentro do parse; garante a ordem lexicográfica
     mat, idx_of = build_adj_matrix(vertices, edges, directed)
     if not vertices:
         print("Grafo vazio.")
