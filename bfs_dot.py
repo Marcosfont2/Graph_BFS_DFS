@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import sys
 import re
 from collections import deque
@@ -17,7 +15,6 @@ def parse_dot(path):
     with open(path, 'r', encoding='utf-8') as f:
         text = f.read()
 
-    # retirar comentários simples // ... e /* ... */ (caso)
     text = re.sub(r'//.*', '', text)
     text = re.sub(r'/\*.*?\*/', '', text, flags=re.DOTALL)
 
@@ -27,7 +24,6 @@ def parse_dot(path):
     if m:
         directed = (m.group(1).lower() == 'digraph')
 
-    # extrair as linhas / tokens dentro das chaves { ... }
     inner = text
     braces = re.search(r'\{(.*)\}', text, flags=re.DOTALL)
     if braces:
